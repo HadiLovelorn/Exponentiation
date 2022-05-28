@@ -74,7 +74,7 @@ long double mult(long double num1, long double num2)
 		result3 = result3 + fraction1;
 	}
 	long double result4 = 0.0;
-	if(fraction2>0.000001)
+	if(fraction2>0.0)
 	result4 = division(fraction1, (division(1,fraction2)));
 	else
 	result4 = 0.0;
@@ -83,11 +83,11 @@ long double mult(long double num1, long double num2)
 	return result;
 }
 
-long double powerinteger(register long double num1, register long double num2)
+long double powerinteger(long double num1,long double num2)
 {
 	
-	register int integer = num2;
-	register long double result = 1.0;
+	int integer = num2;
+	long double result = 1.0;
 	for(int j = 0; j < integer; j++)
 	{
 		result = mult(result, num1);
@@ -96,17 +96,17 @@ long double powerinteger(register long double num1, register long double num2)
 	return result;
 }
 
-long double power(register long double num1, register long double num2)
+long double power(long double num1,long double num2)
 {
 	int integer = num2;
 	long double fraction = (num2+0.01) - integer;
 	fraction = mult(fraction, 10000);
-	register long double powerednum = 0.0, assistant = 0.0, result = 1.01;
+	long double powerednum = 0.0, assistant = 0.0, result = 1.01;
 	powerednum = powerinteger(num1, division(fraction, 1000));
 	assistant = powerednum;
 		while(assistant>1)
 		{
-				register int i = 0;
+				int i = 0;
 				while((assistant>=1)&&(i<10))
 				{
 					assistant = division(assistant, result);
@@ -126,6 +126,19 @@ long double power(register long double num1, register long double num2)
 	return mult(result, (powerinteger(num1, num2)));
 }
 
+long double check(long double num)
+{
+	while(num>=0)
+	{
+		num = num - 2;
+	}
+	
+	if(num<1)
+	return 0;
+	else
+	return 1;
+}
+
 int main()
 {
 	printf("Enter 2 numbers to get power :\n");
@@ -142,9 +155,20 @@ int main()
 	else if((a>0)&&(b<0))
 	printf("Your result is : %Lf\n", division(1, power(a, fabs(b))));
 	else if((a<0)&&(b>0))
-	printf("Your result is : -%Lf\n", power(fabs(a), b));
+		{
+		if((check(fabs(b))==0))
+		printf("Your result is : -%Lf\n", power(fabs(a), b));
+		else
+		printf("Your result is : -%Lf\n", division(1, power(a, fabs(b))));
+		}
+	else if((a<0)&&(b<0))
+		{
+		if((check(fabs(b))==0))
+		printf("Your result is : %Lf\n", division(1, power(fabs(a), fabs(b))));
+		else
+		printf("Your result is : -%Lf\n", division(1, power(fabs(a), fabs(b))));
+		}
 	else
-	printf("Your result is : -%Lf\n", division(1, power(fabs(a), fabs(b))));
-	
+	printf("Undefined!\n");
 	return 0;
 }
