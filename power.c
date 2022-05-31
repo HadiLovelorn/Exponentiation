@@ -148,7 +148,7 @@ long double power(long double num1, long double num2)
 	if(num1>1)
 	return mult(result, (powerinteger(num1, num2)));
 	else
-	return resultfrac;
+	return mult(resultfrac, (powerinteger(num1, num2)));
 }
 
 long double check(long double num)
@@ -197,3 +197,4 @@ int main()
 	printf("Undefined!\n");
 	return 0;
 }
+
