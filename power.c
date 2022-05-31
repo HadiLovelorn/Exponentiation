@@ -95,11 +95,13 @@ long double powerinteger(long double num1, long double num2)
 
 long double power(long double num1, long double num2)
 {
-	int integer = num2;
-	long double fraction = (num2 + 0.01) - integer;
-	fraction = mult(fraction, 10000);
+	int integer1 = num1;
+	long double fraction1 = (num1 + 0.01) - integer1;
+	int integer2 = num2;
+	long double fraction2 = (num2 + 0.01) - integer2;
+	fraction2 = mult(fraction2, 10000);
 	long double powerednum = 0.0, assistant = 0.0, result = 1.01, resultfrac = 0.01, assistant2 = 0.0;
-	powerednum = powerinteger(num1, division(fraction, 1000));
+	powerednum = powerinteger(num1, division(fraction2, 1000));
 	assistant = powerednum;
 	if (num1>1)
 	{
@@ -124,7 +126,7 @@ long double power(long double num1, long double num2)
 	}
 	else
 	{
-		assistant2 = num1;
+		assistant2 = fraction1;
 		while (assistant2 < 1)
 		{
 			int i = 0;
@@ -138,7 +140,7 @@ long double power(long double num1, long double num2)
 			if (assistant2 > 0.999999)
 			{
 				resultfrac = resultfrac + 0.01;
-				assistant2 = num1;
+				assistant2 = fraction1;
 			}
 			else
 			break;
