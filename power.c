@@ -102,8 +102,6 @@ long double power(long double num1, long double num2)
 	fraction2 = mult(fraction2, 10000);
 	long double powerednum = 0.0, assistant = 0.0, result = 1.01;
 	int assistant2 = 0;
-	if (fraction2 > 0)
-	{
 	powerednum = powerinteger(num1, division(fraction2, 1000));
 	assistant = powerednum;
 		while (assistant > 1)
@@ -124,7 +122,6 @@ long double power(long double num1, long double num2)
 			else
 			break;
 		}
-	}
 	
 		if(num1>1)
 		{
@@ -133,10 +130,8 @@ long double power(long double num1, long double num2)
 		else
 		{
 		assistant2 = mult(fraction1, 10);
-		long double result2 = division(power(assistant2, num2), power(10, num2));
-		return result2;
+		return division(power(assistant2, num2), power(10, num2));
 		}
-
 
 }
 
