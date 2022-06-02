@@ -100,11 +100,12 @@ long double power(long double num1, long double num2)
 	int integer2 = num2;
 	long double fraction2 = (num2 + 0.01) - integer2;
 	fraction2 = mult(fraction2, 10000);
-	long double powerednum = 0.0, assistant = 0.0, result = 1.01, resultfrac = 0.01, assistant2 = 0.0;
+	long double powerednum = 0.0, assistant = 0.0, result = 1.01;
+	int assistant2 = 0;
+	if (fraction2 > 0)
+	{
 	powerednum = powerinteger(num1, division(fraction2, 1000));
 	assistant = powerednum;
-	if (num1>1)
-	{
 		while (assistant > 1)
 		{
 			int i = 0;
@@ -124,33 +125,19 @@ long double power(long double num1, long double num2)
 			break;
 		}
 	}
-	else
-	{
-		assistant2 = fraction1;
-		while (assistant2 < 1)
+	
+		if(num1>1)
 		{
-			int i = 0;
-			while ((assistant2 < 1) && (i < 10))
-			{
-				assistant2 = division(assistant2, resultfrac);
-				if (assistant2 >= 0.999999)
-				break;
-				i++;
-			}
-			if (assistant2 > 0.999999)
-			{
-				resultfrac = resultfrac + 0.01;
-				assistant2 = fraction1;
-			}
-			else
-			break;
+		return mult(result, (powerinteger(num1, num2)));
 		}
-	}
+		else
+		{
+		assistant2 = mult(fraction1, 10);
+		long double result2 = division(power(assistant2, num2), power(10, num2));
+		return result2;
+		}
 
-	if(num1>1)
-	return mult(result, (powerinteger(num1, num2)));
-	else
-	return mult(resultfrac, (powerinteger(num1, num2)));
+
 }
 
 long double check(long double num)
@@ -199,4 +186,3 @@ int main()
 	printf("Undefined!\n");
 	return 0;
 }
-
