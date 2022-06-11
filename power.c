@@ -137,15 +137,28 @@ long double power(long double num1, long double num2)
 
 long double check(long double num)
 {
-	while (num >= 0)
-	{
+	if ( num < 0 )
+	{		
+		while (num <= 0)
+		{
 		num = num - 2;
+		}
+		if (num < -1)
+		return 0;
+		else
+		return 1;
 	}
-
-	if (num < 1)
-	return 0;
 	else
-	return 1;
+	{
+		while (num >= 0)
+		{
+		num = num - 2;
+		}
+		if (num < 1)
+		return 0;
+		else
+		return 1;
+	}
 }
 
 int main()
