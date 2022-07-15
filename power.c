@@ -149,7 +149,7 @@ long double check(long double num)
 	{		
 		while (num <= 0)
 		{
-		num = num - 2;
+		num = num + 2;
 		}
 		if (num < -1)
 		return 0;
